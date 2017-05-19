@@ -15,10 +15,13 @@ var express         = require("express"),
 var commentRoutes   = require("./routes/comments"),
     campgroundRoutes= require("./routes/campgrounds"),
     indexRoutes     = require("./routes/index")
-     
 
-//mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://ramro:password@ds147711.mlab.com:47711/_yelpcamp");
+   
+//Local add env var with export DATABASEURL=mongodb://localhost/yelp_camp (C9)
+//mLab add env on heroku dashboard DATABASEURL:mlab url (can changes it depends what changes i make in mlab)
+// can use var url=process.env.DATABASEURL || "mongodb://localhost/yelp_camp" and use var on mongoose connect, this is in case the first one fails (backup)
+mongoose.connect(process.env.DATABASEURL);
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
