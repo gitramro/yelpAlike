@@ -17,9 +17,10 @@ var commentRoutes   = require("./routes/comments"),
     indexRoutes     = require("./routes/index")
 
    
-//Local add env var with export DATABASEURL=mongodb://localhost/yelp_camp (C9) dont forget to start ./mongod on terminal
+//add local db env var with export DATABASEURL=mongodb://localhost/yelp_camp (C9) dont forget to start ./mongod on terminal
 //mLab add env on heroku dashboard DATABASEURL:mlab url (can changes it depends what changes i make in mlab)
-// can use var url=process.env.DATABASEURL || "mongodb://localhost/yelp_camp" and use var on mongoose connect, this is in case the first one fails (backup)
+
+// can use var url=process.env.DATABASEURL || "mongodb://localhost/yelp_camp" and use var on mongoose connect, this is in case the first one fails (this is backup option)
 mongoose.connect(process.env.DATABASEURL);
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -43,7 +44,7 @@ passport.serializeUser(User.serializeUser()); //also this
 passport.deserializeUser(User.deserializeUser()); //also this
 
 app.use(function(req,res,next){
-   res.locals.currentUser = req.user;
+   res.locals.currentUser = req.user; //req user available in all routes
    res.locals.error = req.flash("error");
    res.locals.success = req.flash("success");
    next();
