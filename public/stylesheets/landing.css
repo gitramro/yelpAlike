@@ -1,4 +1,5 @@
 /*https://github.com/nax3t/background-slider*/
+/* imgs found on https://unsplash.com/ */
 
 body {
   background-color: #000;
@@ -40,7 +41,6 @@ body {
   z-index: 0;
   animation: imageAnimation 50s linear infinite; 
 }
-
 .slideshow li:nth-child(1) { 
   background-image: url(http://i.imgur.com/K3mPv14.jpg) 
 }

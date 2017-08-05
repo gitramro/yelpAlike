@@ -21,7 +21,7 @@ var commentRoutes   = require("./routes/comments"),
 //mLab add env on heroku dashboard DATABASEURL:mlab url (can changes it depends what changes i make in mlab)
 
 // can use var url=process.env.DATABASEURL || "mongodb://localhost/yelp_camp" and use var on mongoose connect, this is in case the first one fails (this is backup option)
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL); //NOT WORKING NEED FIX (im adding the env var in first comment line  and when i restart this it starts failing again)
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
